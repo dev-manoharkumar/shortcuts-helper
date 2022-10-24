@@ -4,7 +4,9 @@
   "main": "index.js",
   "author": "Manohar Kumar",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
+    "pdf2json": "^3.0.0",
     "puppeteer": "^19.1.0"
   }
 }

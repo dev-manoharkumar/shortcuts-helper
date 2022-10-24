@@ -40,6 +40,11 @@
   dependencies:
     "@types/node" "*"
 
+"@xmldom/xmldom@^0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.3.tgz#beaf980612532aa9a3004aff7e428943aeaa0711"
+  integrity sha512-Lv2vySXypg4nfa51LY1nU8yDAGo/5YwF+EY/rUZgIbfvwVARcd67ttCM8SMsTeJy51YhHYavEq+FS6R0hW9PFQ==
+
 agent-base@6:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"
@@ -342,6 +347,13 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+pdf2json@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/pdf2json/-/pdf2json-3.0.0.tgz#db5f5be0116047e62233a971a0abbc08041fff97"
+  integrity sha512-BTeaKZJZgmBuFo/52VuAa6FHIE6Hek6yqFTvadoHv6WJ/EBnH6GrD3t5h34o5aNlPbb3vrGd6ANg0J/QT4f1sA==
+  dependencies:
+    "@xmldom/xmldom" "^0.8.3"
 
 pend@~1.2.0:
   version "1.2.0"
