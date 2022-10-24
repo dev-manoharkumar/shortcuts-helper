@@ -153,6 +153,11 @@ cross-fetch@3.1.5:
   dependencies:
     node-fetch "2.6.7"
 
+csv-reader@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/csv-reader/-/csv-reader-1.0.10.tgz#fce38eb92a703dfeea20af145dcf25a7106a0104"
+  integrity sha512-4IgSQSwu/dCRjnrz+BnNe5LZiAHa2sOhccROI0r1gB1FW38Fl/k7Zx0jN3o77e4PTgd9T0cp1mgsD1esJNK+tQ==
+
 debug@4, debug@4.3.4, debug@^4.1.1:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"

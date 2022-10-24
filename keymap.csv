@@ -1,0 +1,25 @@
+Command Shift /,Comment/uncomment with block comment,1
+Option Up Arrow,Select successively increasing code blocks,1
+Option Down Arrow,Decrease current selection to previous state,1
+Ctrl Shift Q,Context info,1
+Option Command L,Reformat code,1
+Option Command I,Auto-indent line(s),1
+Tab,Indent selected lines,1
+Shift Tab,Unindent selected lines,1
+Command Shift V,Paste from recent bufers...,1
+Command D,Duplicate current line or selected block,1
+Command Backspace,Delete line at caret,1
+Option Shift Up Arrow,Move line up,1
+Option Shift Down Arrow,Move line down,1
+Ctrl Shift J,Join lines,1
+Command Enter,Split line,1
+Shift Enter,Start new line,1
+Command Shift U,Toggle case for word at caret or selected block,1
+Option Command Shift  ],Select till code block end,1
+Option Shift Command [,Select till code block start,1
+Option Delete,Delete to word end,1
+Option Backspace,Delete to word start,1
+Command + / Command -,Expand/collapse code block,1
+Shift Command +,Expand all,1
+Shift Command  -,Collapse all,1
+Command W,Close active editor tab,1

@@ -4,8 +4,8 @@
   "main": "index.js",
   "author": "Manohar Kumar",
   "license": "MIT",
-  "type": "module",
   "dependencies": {
+    "csv-reader": "^1.0.10",
     "pdf2json": "^3.0.0",
     "puppeteer": "^19.1.0"
   }
