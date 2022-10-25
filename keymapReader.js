@@ -1,6 +1,5 @@
 import * as Fs from 'fs';
 import CsvReadableStream  from 'csv-reader';
-// const CsvReadableStream = require('csv-reader');
 
 let inputStream = Fs.createReadStream('keymap.csv', 'utf8');
 
