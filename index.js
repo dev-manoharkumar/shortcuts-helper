@@ -1,3 +1,5 @@
-import { addProductCategory } from './csvHelper/helper.js';
+import { addProduct, addProductCategory } from './csvHelper/helper.js';
 
-addProductCategory();
+// addProductCategory();
+
+addProduct();
