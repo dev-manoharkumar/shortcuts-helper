@@ -9,7 +9,35 @@ function getInputStream(fileName) {
 }
 
 function assembleProductCategoryData(existingData, currentRow) {
-  existingData.push(currentRow[0])
+  existingData.push(currentRow[0]);
+}
+
+function assembleShortcutCategoryData(existingData, currentRow) {
+  const name = currentRow[0];
+  const slug = currentRow[1];
+  const order = currentRow[2];
+  const product = currentRow[3];
+  existingData.push({
+    name,
+    slug,
+    order,
+    product
+  });
+}
+
+function assembleShortcutData(existingData, currentRow) {
+  const keyCombo = currentRow[0];
+  const title = currentRow[1];
+  const operating_system = currentRow[2];
+  const product = currentRow[3];
+  const shortcut_category = currentRow[4];
+  existingData.push({
+    keyCombo,
+    title,
+    operating_system,
+    product,
+    shortcut_category
+  });
 }
 
 function assembleProductData(existingData, currentRow) {
@@ -17,19 +45,19 @@ function assembleProductData(existingData, currentRow) {
   const description = currentRow[1];
   const productCategoriesRaw = currentRow[2];
   const productCategories = [];
-  if(typeof productCategoriesRaw === 'string'){
-    const splitData = productCategoriesRaw.split(',')
+  if (typeof productCategoriesRaw === 'string') {
+    const splitData = productCategoriesRaw.split(',');
     for (const splitDatum of splitData) {
-      productCategories.push(Number(splitDatum))
+      productCategories.push(Number(splitDatum));
     }
   } else {
-    productCategories.push(productCategoriesRaw)
+    productCategories.push(productCategoriesRaw);
   }
   existingData.push({
     name: name,
     description: description,
     productCategories: productCategories
-  })
+  });
 }
 
 function readCsvFile(fileName, callback) {
@@ -39,9 +67,10 @@ function readCsvFile(fileName, callback) {
   .pipe(new CsvReadableStream({
     parseNumbers: true,
     parseBooleans: true,
-    trim: true
+    trim: true,
+    skipHeader: true
   }))
-  .on('data', (row)=> {
+  .on('data', (row) => {
     switch (fileName) {
       case FILE_NAME.PRODUCT_CATEGORY:
         assembleProductCategoryData(data, row);
@@ -49,38 +78,77 @@ function readCsvFile(fileName, callback) {
       case FILE_NAME.PRODUCT:
         assembleProductData(data, row);
         break;
+      case FILE_NAME.SHORTCUT_CATEGORY:
+        assembleShortcutCategoryData(data, row);
+        break;
+      case FILE_NAME.SHORTCUT:
+        assembleShortcutData(data, row);
+        break;
     }
   })
-  .on('end', ()=> {
-    callback(data)
-  })
+  .on('end', () => {
+    callback(data);
+  });
   
 }
 
 export function addProductCategory() {
- readCsvFile(FILE_NAME.PRODUCT_CATEGORY, async (data) => {
-   for (const datum of data) {
-     await axiosShortcutInstance.post('product-categories', {
-       data: {
-         name: datum
-       }
-     })
-   }
- });
+  readCsvFile(FILE_NAME.PRODUCT_CATEGORY, async (data) => {
+    for (const datum of data) {
+      await axiosShortcutInstance.post('product-categories', {
+        data: {
+          name: datum
+        }
+      });
+    }
+  });
+}
+
+export function addShortcutCategory() {
+  readCsvFile(FILE_NAME.SHORTCUT_CATEGORY, async (data) => {
+    for (const datum of data) {
+      
+      try {
+        await axiosShortcutInstance.post('shortcut-categories', {
+          data: datum
+        });
+        console.log('successfully added: ', datum.name);
+      } catch (e) {
+        console.log('********** Failed for : ', datum.name);
+        console.log(e.data);
+      }
+    }
+  });
+}
+
+export function addShortcuts() {
+  readCsvFile(FILE_NAME.SHORTCUT, async (data) => {
+    for (const datum of data) {
+      try {
+        await axiosShortcutInstance.post('shortcuts', {
+          data: datum
+        });
+        console.log('successfully added: ', datum.keyCombo);
+      } catch (e) {
+        console.log('********** Failed for : ', datum.keyCombo);
+        console.log(e.message);
+      }
+    }
+  });
 }
 
 export function addProduct() {
   readCsvFile(FILE_NAME.PRODUCT, async (data) => {
     for (const datum of data) {
-      try{
+      try {
         await axiosShortcutInstance.post('products', {
           data: datum
-        })
-        console.log('successfully added: ', datum.name)
+        });
+        console.log('successfully added: ', datum.name);
       } catch (e) {
         console.log('Failed for : ', datum.name);
         console.log(e.data);
       }
     }
-  })
+  });
 }
